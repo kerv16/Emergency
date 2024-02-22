@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, flash, url_for
 import Configurations as c
+from flask_cors import CORS,cross_origin
 
 def _init_config_():
 	c._SERVER_PORT = c.LOCAL_PORT
@@ -11,6 +12,8 @@ def _init_config_():
 	c.PORT = 80
 	c.IS_ON_SERVER = False
 	c.IP_address = c.LOCAL_IP
+	c.JSON_PATH = "assets/response/devices.json"
+
 # ===========================================================================
 print(" * LOCAL Launch")
 _init_config_()

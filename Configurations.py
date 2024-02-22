@@ -29,7 +29,7 @@ LOCAL_DATABASE = "emrg";
 # LOCAL_DATABASE = "dti_rapidxi";
 IS_ON_SERVER = False;
 DB_CRED = [];
-
+JSON_PATH =None
 # SERVER_PORT=3306;
 # SERVER_HOST = "dtirapid.mysql.pythonanywhere-services.com";
 # SERVER_USER = "dtirapid";

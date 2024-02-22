@@ -13,7 +13,7 @@ from tqdm import tqdm
 app = Blueprint("emeregency",__name__,template_folder='pages')
 rapid_mysql = mysql(*c.DB_CRED)
 
-PATH_RESPONSE = "assets/response/devices.json"
+# JSON_PATH = "assets/response/devices.json"
 # app = Flask(__name__)
 
 
@@ -26,7 +26,7 @@ def dashboard():
 
 @app.route("/emeregency/get_all_status",methods=["POST","GET"])
 def get_all_status():
-	_file = open(PATH_RESPONSE,"r")
+	_file = open(c.JSON_PATH,"r")
 	_data = json.loads(_file.read())
 	return jsonify(_data)
 
