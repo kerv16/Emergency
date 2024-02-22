@@ -1,0 +1,31 @@
+from flask import Flask, render_template, redirect, flash, url_for
+import Configurations as c
+
+def _init_config_():
+	c._SERVER_PORT = c.LOCAL_PORT
+	c._HOST = c.LOCAL_HOST
+	c._USER = c.LOCAL_USER
+	c._PASSWORD = c.LOCAL_PASSWORD
+	c._DATABASE = c.LOCAL_DATABASE
+	c.DB_CRED = [c.LOCAL_HOST,c.LOCAL_USER,c.LOCAL_PASSWORD,c.LOCAL_DATABASE] # DEV
+	c.PORT = 80
+	c.IS_ON_SERVER = False
+	c.IP_address = c.LOCAL_IP
+# ===========================================================================
+print(" * LOCAL Launch")
+_init_config_()
+import bp_app as bp
+_init_config_()
+
+app = Flask(__name__)
+app.register_blueprint(bp.app);
+
+
+@app.route("/")
+def index():
+	return redirect("/emeregency/dashboard")
+	
+
+if __name__ == "__main__":	
+		app.run(debug=True,host="0.0.0.0")
+

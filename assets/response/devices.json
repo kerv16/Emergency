@@ -1,0 +1,25 @@
+[
+	{
+		"name" : "Juan Dela Pena",
+		"device" : "Iphone X",
+		"latlong" : "7.067578, 125.603822",
+		"num" : "09123131",
+		"emer_num" : "095138113",
+		"accel" : "2313",
+		"gyro" : "8354",
+		"axis" : "2774356",
+		"status" : "danger"
+	},
+	{
+		"name" : "Hanabi Pascual",
+		"device" : "Nokia 3210",
+		"latlong" : "7.078098, 125.622147",
+		"num" : "09131231314",
+		"emer_num" : "091232412451",
+		"accel" : "123123",
+		"gyro" : "4526324",
+		"axis" : "123446",
+		"status" : "idle"
+	}
+
+]

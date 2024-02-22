@@ -1,0 +1,59 @@
+
+<div id="card_holder">
+</div>
+
+<script type="text/javascript">
+	$onload(
+		function(){
+			window.setInterval(function(){
+				$send({
+					action : "/emeregency/get_all_status",
+					method : POST,
+					func : function(r){
+						var res = JSON.parse(r)
+						var _card_holder = ""
+						for (var i = 0; i < res.length; i++) {
+							res[i]
+							var _status = ["blue","x-hide"]
+							if(res[i]['status']=="danger"){
+								_status = ["red","x-show"]
+							}
+							_card_holder += (`
+								<div class="x-row x-container" style="margin-bottom:5px;">
+									<div class="x-container">
+										<div class="x-container x-padding x-round-xxlarge x-pale-${_status[0]} x-border x-border-${_status[0]} x-leftbar" style="">
+											<div class="x-col l3">
+												<b>${res[i]['name']}</b><br>
+												<span class="x-small">${res[i]['device']}</span>
+											</div>
+											<div class="x-col l4">
+												<span>Coordinates</span> :[<b>${res[i]['latlong']}</b>]<br>
+												<span class="x-small">
+													<span>Contact Number</span> : <b class="x-small">${res[i]['num']}</b><br>
+													<span>Emergency Contact Number</span> : <b class="x-small">${res[i]['emer_num']}</b>
+												</span>
+											</div>
+											<div class="x-col l3 x-small">
+												<text style="line-height: 3px;">
+													<span>accelerometer</span> :[<b>${res[i]['accel']}</b>]<br>
+													<span>Gyroscope</span> :[<b>${res[i]['gyro']}</b>]<br>
+													<span>Axis</span> :[<b>${res[i]['axis']}</b>]<br>
+												</text>
+											</div>
+											<div class="x-col l2 x-small x-padding ${_status[1]}">
+												<button class="x-btn x-black x-round-xxlarge" onclick="set_danger_area('${res[i]['latlong']}')">
+													View on Map <span class="fa fa-map-o"></span>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							`)
+						}
+						$ID("card_holder").innerHTML = _card_holder
+					}
+				})
+			},500)
+		}
+	)
+</script>
