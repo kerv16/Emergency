@@ -24,8 +24,3 @@ app.register_blueprint(bp.app);
 @app.route("/")
 def index():
 	return redirect("/emeregency/dashboard")
-	
-
-if __name__ == "__main__":	
-		app.run(debug=True,host="0.0.0.0")
-
