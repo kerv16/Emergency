@@ -1,5 +1,8 @@
 from flask import Flask, render_template, redirect, flash, url_for
 import Configurations as c
+from flask_cors import CORS,cross_origin
+
+
 
 def _init_config_():
 	c._SERVER_PORT = c.LOCAL_PORT
@@ -18,6 +21,8 @@ import bp_app as bp
 _init_config_()
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 app.register_blueprint(bp.app);
 
 

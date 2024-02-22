@@ -18,8 +18,9 @@ import bp_app as bp
 _init_config_()
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 app.register_blueprint(bp.app);
-
 
 @app.route("/")
 def index():

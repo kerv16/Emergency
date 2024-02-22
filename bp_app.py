@@ -11,8 +11,6 @@ import pandas as pd
 from tqdm import tqdm
 
 app = Blueprint("emeregency",__name__,template_folder='pages')
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
 rapid_mysql = mysql(*c.DB_CRED)
 
 PATH_RESPONSE = "assets/response/devices.json"
