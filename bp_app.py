@@ -71,7 +71,7 @@ def clear():
 				shutil.rmtree(file_path)
 		except Exception as e:
 			print('Failed to delete %s. Reason: %s' % (file_path, e))
-	return redirect("/home")
+	return redirect("/emeregency/dashboard")
 
 # ======================================
 _data_struct = [
