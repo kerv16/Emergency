@@ -40,7 +40,6 @@ def set_users():
 	return "DONE"
 
 
-
 # ======================================
 _data_struct = [
 	{
