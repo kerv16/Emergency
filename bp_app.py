@@ -22,6 +22,11 @@ def dashboard():
 	return render_template('ft_index.html')
 
 
+@app.route("/home")
+def home():
+	return render_template('home.html')
+
+
 @app.route("/emeregency/get_all_status",methods=["POST","GET"])
 def get_all_status():
 	all_users = {}
@@ -46,6 +51,13 @@ def set_users(name):
 	_file.close()
 
 	return "DONE"
+
+@app.route("/dl/<file_>",methods=["POST","GET"])
+def download_file(file_):
+	# today = str(datetime.today()).replace("-","_").replace(" ","_").replace(":","_").replace(".","_")
+	# def_name = "{}_{}".format(today,file_)
+	def_name = file_
+	return send_file(file_, as_attachment=True,download_name=def_name)
 
 
 

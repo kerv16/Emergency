@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+<html>
+	{% include 'head.html' %}
+	<style>
+	body,h1,h5 {font-family: "Raleway", sans-serif}
+	body, html {height: 100%}
+	.bgimg {
+	  background-image: url('../static/img/bg.jpg');
+	  min-height: 100%;
+	  background-position: center;
+	  background-size: cover;
+	}
+	.hh{
+
+			background: 
+				linear-gradient(rgba(0, 0, 0, 1),
+				rgba(100, 100, 100, 0.55)),
+				url('../static/img/bg.jpg');
+			background-position: center;
+			background-size: cover;
+	}
+	}
+	</style>
+	<body>
+
+		<div class="bgimg hh x-display-container x-text-white">
+			<div class="x-display-middle gr_body x-padding x-round-xxlarge">
+				<strong class="x-xxlarge">Emergency Watch</strong><br>
+				<span class="x-small">By Caraga State University</span>
+			</div>
+			<div class="x-display-topleft x-container x-xlarge">
+				<p><button onclick="goto('/emeregency/dashboard')" class="x-button x-round-xxlarge x-orange">Admin</button></p>
+				<p><button onclick="download_login_start()" class="x-button x-round-xxlarge x-orange">Download</button></p>
+			</div>
+			<div class="x-display-bottomleft x-container _x-text-black">
+				<p class="x-xlarge">monday - friday 10-23 | saturday 14-02</p>
+				<p class="x-large">Butuan City</p>
+				<p>Caraga State Unversity</p>
+			</div>
+		</div>
+
+		<!-- Menu Modal -->
+		</div>
+
+		<!-- Contact Modal -->
+		<div id="contact" class="x-modal">
+			<div class="x-modal-content x-animate-zoom">
+				<div class="x-container x-black">
+					<span onclick="download_login_start('VC_FORM_A_v2_0.xls')" class="x-button x-display-topright x-large">x</span>
+					<h1>Contact</h1>
+				</div>
+				<div class="x-container">
+					<p>Reserve a table, ask for today's special or just send us a message:</p>
+					<form action="/action_page.php" target="_blank">
+						<p><input class="x-input x-padding-16 x-border" type="text" placeholder="Name" required name="Name"></p>
+						<p><input class="x-input x-padding-16 x-border" type="number" placeholder="How many people" required name="People"></p>
+						<p><input class="x-input x-padding-16 x-border" type="datetime-local" placeholder="Date and time" required name="date" value="2020-11-16T20:00"></p>
+						<p><input class="x-input x-padding-16 x-border" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
+						<p><button class="x-button" type="submit">SEND MESSAGE</button></p>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// download_login_start('VC_FORM_A_v2_0.xls')"
+			function download_login_start(fff){
+				let a= document.createElement('a');
+				a.target= '_blank';
+				a.href= '/dl/app-debug.apk';
+				a.click();
+			}
+
+		</script>
+	</body>
+</html>

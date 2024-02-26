@@ -27,7 +27,7 @@ app.register_blueprint(bp.app);
 
 @app.route("/")
 def index():
-	return redirect("/emeregency/dashboard")
+	return redirect("/home")
 	
 
 if __name__ == "__main__":	
