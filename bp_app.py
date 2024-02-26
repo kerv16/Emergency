@@ -31,6 +31,15 @@ def get_all_status():
 	return jsonify(_data)
 
 
+@app.route("/emeregency/set_users",methods=["POST","GET"])
+def set_users():
+	for key in request.form:
+		print(key)
+	# _file = open(c.JSON_PATH,"r")
+	# _data = json.loads(_file.read())
+	return "DONE"
+
+
 
 # ======================================
 _data_struct = [
