@@ -39,7 +39,6 @@ def set_users():
 	# _data = json.loads(_file.read())
 	return "DONE"
 
-
 # ======================================
 _data_struct = [
 	{
