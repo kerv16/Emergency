@@ -16,8 +16,6 @@ rapid_mysql = mysql(*c.DB_CRED)
 # JSON_PATH = "assets/response/devices.json"
 # app = Flask(__name__)
 
-
-
 @app.route("/emeregency")
 @app.route("/emeregency/dashboard")
 def dashboard():
@@ -26,18 +24,31 @@ def dashboard():
 
 @app.route("/emeregency/get_all_status",methods=["POST","GET"])
 def get_all_status():
-	_file = open(c.JSON_PATH,"r")
-	_data = json.loads(_file.read())
-	return jsonify(_data)
-
-
-@app.route("/emeregency/set_users",methods=["POST","GET"])
-def set_users():
-	for key in request.form:
-		print(key)
+	all_users = {}
 	# _file = open(c.JSON_PATH,"r")
-	# _data = json.loads(_file.read())
+	# _data = _file.read()
+	for fname in os.listdir(c.JSON_PATH):
+		_file = open(c.JSON_PATH+fname,"r")
+		_data = json.loads(_file.read())
+		all_users[fname] = _data
+	return jsonify(all_users)
+	# return jsonify(_data)
+
+
+@app.route("/emeregency/set_users/<name>",methods=["POST","GET"])
+def set_users(name):
+	user = {}
+	for key in request.form:
+		user[key] = request.form[key]
+
+	_file = open(c.JSON_PATH+name,"w")
+	_data = _file.write(json.dumps(user))
+	_file.close()
+
 	return "DONE"
+
+
+
 
 # ======================================
 _data_struct = [
