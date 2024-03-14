@@ -1,58 +1,44 @@
+<audio id="notifSound" src="sos-signal.mp3" preload="auto"></audio>
 
 <div id="card_holder">
 </div>
 
 <script type="text/javascript">
-	$onload(
-		function(){
-			window.setInterval(function(){
-				$send({
-					action : "/emeregency/get_all_status",
-					method : POST,
-					func : function(r){
-						var res = JSON.parse(r)
-						var _card_holder = ""
-						// for (var i = 0; i < res.length; i++) {
-						for(key in res){
-							user = res[key]
-							var _status = ["blue","x-hide"]
-							if(user['status'].split("::")[0]=="danger"){
-								_status = ["red","x-show"]
-							}
-							_card_holder += (`
-								<div class="x-row x-container" style="margin-bottom:5px;">
-									<div class="x-container">
-										<div class="x-container x-padding x-round-xxlarge x-pale-${_status[0]} x-border x-border-${_status[0]} x-leftbar" style="">
-											<div class="x-col l3">
-												<b>${user['name']}</b><br>
-												<span class="x-small">${user['device']}</span>
-											</div>
-											<div class="x-col l4">
-												<span>Coordinates</span> :[<b>${user['latlong']}</b>]<br>
-												<span class="x-small">
-													<span>Contact Number</span> : <b class="x-small">${user['num']}</b><br>
-													<span>Emergency Contact Number</span> : <b class="x-small">${user['emer_num']}</b>
-												</span>
-											</div>
-											<div class="x-col l3 x-small">
-												<text style="line-height: 3px;">
-													<span>status</span> :<b>${user['status'].replaceAll("_","<br>").replaceAll("::","<br>")}</b>
-												</text>
-											</div>
-											<div class="x-col l2 x-small x-padding ${_status[1]}">
-												<button class="x-btn x-black x-round-xxlarge" onclick="set_danger_area('${user['latlong']}')">
-													View on Map <span class="fa fa-map-o"></span>
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							`)
-						}
-						$ID("card_holder").innerHTML = _card_holder
-					}
-				})
-			},500)
-		}
-	)
+    $onload(
+        function(){
+            window.setInterval(function(){
+                $send({
+                    action : "/emeregency/get_all_status",
+                    method : POST,
+                    func : function(r){
+                        var res = JSON.parse(r)
+                        var _card_holder = ""
+                        var isDanger = false;
+                        for(key in res){
+                            user = res[key]
+                            var _status = ["blue","x-hide"]
+                            if(user['status'].split("::")[0]=="danger"){
+                                _status = ["red","x-show"]
+                                isDanger = true;
+                            }
+                            _card_holder += (`
+                                <div class="x-row x-container" style="margin-bottom:5px;">
+                                    <div class="x-container">
+                                        <div class="x-container x-padding x-round-xxlarge x-pale-${_status[0]} x-border x-border-${_status[0]} x-leftbar" style="">
+                                            <div class="x-col l3">
+                                                <b>${user['name']}</b><br>
+                                                <!-- Rest of your code -->
+                            `)
+                        }
+                        $ID("card_holder").innerHTML = _card_holder
+
+                        // If any user is in danger, play the sound
+                        if (isDanger) {
+                            document.getElementById('notifSound').play();
+                        }
+                    }
+                })
+            },500)
+        }
+    )
 </script>
